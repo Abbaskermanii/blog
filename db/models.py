@@ -1,12 +1,12 @@
-from sqlalchemy.orm import mapped_column, Mapped
-from engin import Base
+from sqlalchemy.orm import Mapped, mapped_column
+from db.engine import Base
 
 
-class user(Base):
+class User(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    password: Mapped[str] = mapped_column()
     username: Mapped[str | None] = mapped_column(
-        unique=True, default=None, nullable=True
+        unique=True, nullable=True, default=None
     )
-    password: mapped_column[str] = mapped_column()
